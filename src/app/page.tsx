@@ -6,7 +6,6 @@ import Link from "next/link";
 import ReactBeforeSliderComponent from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 import { FaSkullCrossbones, FaLeaf } from "react-icons/fa"; // Import icons
-import customerReviews from "../data/customerReviews";
 import CustomerReviewSection from "../components/CustomerReviewsSection";
 
 export default function Home() {
@@ -177,10 +176,10 @@ export default function Home() {
 
       {/* customer review section */}
       <CustomerReviewSection />
+
+      {/* Call-to-Action Button */}
       <section className="flex flex-col items-center justify-center py-16 px-4 bg-white">
         
-
-        {/* Call-to-Action Button */}
         <motion.a
           href="/shop"
           className="mt-6 px-8 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition"
