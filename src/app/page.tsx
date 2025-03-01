@@ -7,6 +7,7 @@ import ReactBeforeSliderComponent from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 import { FaSkullCrossbones, FaLeaf } from "react-icons/fa"; // Import icons
 import CustomerReviewSection from "../components/CustomerReviewsSection";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const FIRST_IMAGE = { imageUrl: "/realcinnamon.png" };
@@ -15,6 +16,9 @@ export default function Home() {
 
   return (
     <div className="bg-white text-gray-900 min-h-screen">
+      {/* Navbar section */}
+      <Navbar/>
+      
       {/* Hero Section */}
       <section className="relative flex items-center justify-center h-screen bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('/realcinnamon.png')" }}>
         {/* Gradient Overlay */}
