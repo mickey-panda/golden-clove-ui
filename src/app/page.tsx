@@ -39,7 +39,7 @@ export default function Home() {
         {/* Scroll Down Indicator */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
         <p className="w-full text-center text-white text-lg mb-2 opacity-80 leading-relaxed animate-fade-in">
-          Scroll down to know more about "Cinnamon"
+          Scroll down to know more about &quot;Cinnamon&quot;
         </p>
           <div className="animate-bounce">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
