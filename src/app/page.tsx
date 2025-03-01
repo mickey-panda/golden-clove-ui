@@ -6,6 +6,8 @@ import Link from "next/link";
 import ReactBeforeSliderComponent from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 import { FaSkullCrossbones, FaLeaf } from "react-icons/fa"; // Import icons
+import customerReviews from "../data/customerReviews";
+import CustomerReviewSection from "../components/CustomerReviewsSection";
 
 export default function Home() {
   const FIRST_IMAGE = { imageUrl: "/realcinnamon.png" };
@@ -85,7 +87,7 @@ export default function Home() {
 
       </section>
 
-
+      {/* Cinnamon slider */}
       <section className="relative flex flex-col items-center justify-center py-20 px-6 bg-gray-50">
         {/* Heading with Animation */}
         <motion.h2
@@ -123,16 +125,6 @@ export default function Home() {
             Real Cinnamon
           </div>
         </div>
-
-        {/* Call-to-Action Button */}
-        <motion.a
-          href="/shop"
-          className="mt-6 px-8 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Buy 100% Real Cinnamon
-        </motion.a>
       </section>
 
 
@@ -183,6 +175,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* customer review section */}
+      <CustomerReviewSection />
+      <section className="flex flex-col items-center justify-center py-16 px-4 bg-white">
+        
+
+        {/* Call-to-Action Button */}
+        <motion.a
+          href="/shop"
+          className="mt-6 px-8 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Buy 100% Real Cinnamon
+        </motion.a>
+      </section>
 
       {/* Footer */}
       <footer className="text-center py-4 bg-gray-800 text-white">
