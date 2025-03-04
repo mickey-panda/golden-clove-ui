@@ -23,7 +23,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8 font-medium">
-          <NavItem href="/shop" label="Shop" />
+          <NavItem href="/products" label="Products" />
           <NavItem href="/blogs" label="Blogs" />
           <NavItem href="/contact" label="Contact Us" />
           <NavItem href="/about" label="About Us" />
@@ -46,7 +46,7 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <NavItem href="/shop" label="Shop" onClick={() => setIsOpen(false)} />
+          <NavItem href="/products" label="Products" onClick={() => setIsOpen(false)} />
           <NavItem href="/blogs" label="Blogs" onClick={() => setIsOpen(false)} />
           <NavItem href="/contact" label="Contact Us" onClick={() => setIsOpen(false)} />
           <NavItem href="/about" label="About Us" onClick={() => setIsOpen(false)} />

@@ -8,6 +8,7 @@ import "react-before-after-slider-component/dist/build.css";
 import { FaSkullCrossbones, FaLeaf } from "react-icons/fa"; // Import icons
 import CustomerReviewSection from "../components/CustomerReviewsSection";
 import Navbar from "../components/Navbar";
+import Image from "next/image";
 
 export default function Home() {
   const FIRST_IMAGE = { imageUrl: "/realcinnamon.png" };
@@ -34,7 +35,7 @@ export default function Home() {
           </p>
 
           {/* Call-to-Action Button */}
-          <Link href="/shop">
+          <Link href="/products">
             <button className="mt-6 px-8 py-4 text-lg font-semibold bg-yellow-500 text-white rounded-full shadow-md transition-transform transform hover:scale-105 hover:bg-yellow-600">
               🛍️ Shop Now
             </button>
@@ -178,6 +179,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Where to find real cinnamon section */}
+      <section className="py-20 px-6 bg-yellow-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold text-gray-900 mb-4">
+            Where to Find Real Ceylon Cinnamon?
+          </h2>
+          <p className="text-lg text-gray-700 mb-6">
+            You might find Sri Lankan Ceylon Cinnamon on marketplaces like
+            Flipkart and Amazon, but at ₹4 - ₹6 per gram, it’s overpriced!
+          </p>
+
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="bg-white rounded-lg shadow-lg p-6 md:flex items-center justify-between"
+          >
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-yellow-700 mb-2">
+                Why Pay More?
+              </h3>
+              <p className="text-gray-600">
+                Get **100% pure, authentic Ceylon Cinnamon** from Golden Clove at
+                just <span className="text-red-500 font-bold">₹2.35 per gram</span>!
+              </p>
+              <p className="text-green-600 font-semibold mt-2">
+                ✅ Lower price, better quality, no middlemen!
+              </p>
+            </div>
+
+            <div className="flex justify-center mt-4 md:mt-0">
+              <Image
+                src="/realcinnamon.png"
+                width={250}
+                height={150}
+                alt="Ceylon Cinnamon vs Fake Cinnamon"
+                className="rounded-lg"
+              />
+            </div>
+          </motion.div>
+
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-red-100 p-4 rounded-lg shadow-md text-center"
+            >
+              <h3 className="text-lg font-semibold text-red-700">Amazon</h3>
+              <p className="text-gray-700">₹5.50/g</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-100 p-4 rounded-lg shadow-md text-center"
+            >
+              <h3 className="text-lg font-semibold text-gray-700">Flipkart</h3>
+              <p className="text-gray-700">₹4.75/g</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-green-100 p-4 rounded-lg shadow-md text-center"
+            >
+              <h3 className="text-lg font-semibold text-green-700">Golden Clove</h3>
+              <p className="text-green-700 text-xl font-bold">₹2.35/g</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* customer review section */}
       <CustomerReviewSection />
 
@@ -185,7 +253,7 @@ export default function Home() {
       <section className="flex flex-col items-center justify-center py-16 px-4 bg-white">
         
         <motion.a
-          href="/shop"
+          href="/products"
           className="mt-6 px-8 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -201,3 +269,4 @@ export default function Home() {
     </div>
   );
 }
+
