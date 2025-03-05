@@ -8,7 +8,7 @@ import customerReviews from "../data/customerReviews";
 
 const CustomerReviewsSection = () => {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4">
       <h2 className="text-3xl font-semibold text-center mb-6">What Our Customers Say</h2>
       <div className="max-w-3xl mx-auto">
         <Swiper

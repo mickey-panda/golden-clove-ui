@@ -21,7 +21,7 @@ export default function Home() {
       <Navbar/>
       
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center h-screen bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('/realcinnamon.png')" }}>
+      <section className="relative flex items-center justify-center h-screen">
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
@@ -92,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* Cinnamon slider */}
-      <section className="relative flex flex-col items-center justify-center py-20 px-6 bg-gray-50">
+      <section className="relative flex flex-col items-center justify-center py-20 px-6">
         {/* Heading with Animation */}
         <motion.h2
           className="text-4xl font-bold text-gray-900 mb-6 text-center"
@@ -104,7 +104,7 @@ export default function Home() {
         </motion.h2>
 
         {/* Interactive Slider Section */}
-        <div className="relative max-w-3xl w-full bg-white shadow-lg rounded-2xl p-6 glassmorphism">
+        <div className="relative max-w-3xl w-full bg-gray-50 shadow-lg rounded-2xl p-6 glassmorphism">
           <ReactBeforeSliderComponent
             firstImage={FIRST_IMAGE}
             secondImage={SECOND_IMAGE}
@@ -133,7 +133,7 @@ export default function Home() {
 
 
       {/* Harmful Effects & Benefits Section */}
-      <section className="py-16 px-4 bg-gray-100">
+      <section className="py-16 px-4">
         <h2 className="text-3xl font-semibold text-center mb-6">Why Choose Real Cinnamon?</h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           
@@ -180,7 +180,7 @@ export default function Home() {
       </section>
 
       {/* Where to find real cinnamon section */}
-      <section className="py-20 px-6 bg-yellow-50">
+      <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4">
             Where to Find Real Ceylon Cinnamon?
