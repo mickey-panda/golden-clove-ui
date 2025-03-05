@@ -12,8 +12,15 @@ const contact = () => {
       {/* Main Content */}
       <main className="flex-1">
         <section className="pt-24 text-center">
-        <h1 className="text-4xl font-bold text-center text-yellow-600 mb-6">Contact Us</h1>
-          <p className="text-lg mt-4">We are here to assist you. Reach out to us anytime!</p>
+            <motion.h1 
+                className="text-4xl font-bold text-yellow-600"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                Contact Us
+            </motion.h1>
+            <p className="text-lg mt-4">We are here to assist you. Reach out to us anytime!</p>
         </section>
 
         <div className="max-w-5xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8">

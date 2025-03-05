@@ -5,6 +5,7 @@ import CategoryList from "./CategoryList";
 import ProductGrid from "./ProductGrid";
 import SearchBar from "./SearchBar";
 import products from "../data/products"
+import { motion } from "framer-motion";
 
 const categories = ["All", "Whole Spice", "Pure Spice", "Blended Spice"];
 
@@ -26,7 +27,14 @@ const ProductsComponent = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
-      <h1 className="text-4xl font-bold text-center text-yellow-600 mb-6">Our Products</h1>
+      <motion.h1 
+            className="text-4xl font-bold text-yellow-600 text-center mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Products
+      </motion.h1>
 
       <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
       <CategoryList categories={categories} selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
