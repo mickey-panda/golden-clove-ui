@@ -6,6 +6,7 @@ import ProductGrid from "./ProductGrid";
 import SearchBar from "./SearchBar";
 import products from "../data/products"
 import { motion } from "framer-motion";
+import FloatingCartButton from "./FloatingCartButton";
 
 const categories = ["All", "Whole Spice", "Pure Spice", "Blended Spice"];
 
@@ -40,6 +41,7 @@ const ProductsComponent = () => {
       <CategoryList categories={categories} selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
 
       <ProductGrid products={filteredProducts} loading={loading} />
+      <FloatingCartButton/>
     </div>
   );
 };

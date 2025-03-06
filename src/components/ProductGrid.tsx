@@ -5,7 +5,7 @@ interface ProductGridProps {
     id: number;
     name: string;
     image: string;
-    sizes: { size: string; price: string }[];
+    sizes: { size: string; price: number }[];
   }[];
   loading: boolean;
 }
@@ -13,7 +13,7 @@ interface ProductGridProps {
 const ProductGrid: React.FC<ProductGridProps> = ({ products, loading }) => {
   if (loading) {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mt-6">
         {Array.from({ length: 8 }).map((_, index) => (
           <div
             key={index}
@@ -30,7 +30,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, loading }) => {
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mt-6">
       {products.map((product) => (
         <ProductItem key={product.id} product={product} />
       ))}
