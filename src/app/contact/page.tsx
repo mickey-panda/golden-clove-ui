@@ -2,6 +2,7 @@
 import Navbar from "../../components/Navbar";
 import { FaPhoneAlt, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 const contact = () => {
   return (
@@ -95,9 +96,7 @@ const contact = () => {
       </main>
 
       {/* Footer - Fixed at Bottom */}
-      <footer className="bg-gray-800 text-gray-400 text-center py-4 text-sm">
-        © 2025 Golden Clove. All rights reserved.
-      </footer>
+      <Footer/>
     </div>
   );
 };

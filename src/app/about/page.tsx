@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import teamMembers from "../../data/teamMembers";
 // import ComparisonTable from "@/components/ComparisonTable";
+import Footer from "@/components/Footer";
 
 const About = () => {
   return (
@@ -88,7 +89,7 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className="mt-16 px-6">
+        <section className="mt-16 mb-8 px-6">
             <h2 className="text-3xl font-semibold text-center text-gray-900">Meet Our Team</h2>
             <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8 place-items-center">
                 {teamMembers.map((member, index) => (
@@ -115,9 +116,7 @@ const About = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-400 text-center py-4 text-sm mt-12">
-        © 2025 Golden Clove. All rights reserved.
-      </footer>
+      <Footer/>
     </div>
   );
 };

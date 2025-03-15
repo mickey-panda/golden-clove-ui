@@ -9,6 +9,7 @@ import { FaSkullCrossbones, FaLeaf } from "react-icons/fa"; // Import icons
 import CustomerReviewSection from "../components/CustomerReviewsSection";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const FIRST_IMAGE = { imageUrl: "/realcinnamon.png" };
@@ -263,9 +264,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center py-4 bg-gray-800 text-white">
-        <p>&copy; 2025 Golden Clove. All rights reserved.</p>
-      </footer>
+      <Footer/>
     </div>
   );
 }
