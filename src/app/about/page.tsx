@@ -17,7 +17,7 @@ const About = () => {
       <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8">
         <section className="text-center py-20">
             <motion.h1
-            className="text-5xl font-extrabold text-yellow-700 drop-shadow-md"
+            className="text-4xl font-bold text-yellow-600"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
