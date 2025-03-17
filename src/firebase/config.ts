@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBa4WDrrPeHBja02c9tl1-aBvPATkbJ00E",
-  authDomain: "next-auth-phone.firebaseapp.com",
-  projectId: "next-auth-phone",
-  storageBucket: "next-auth-phone.firebasestorage.app",
-  messagingSenderId: "926306459443",
-  appId: "1:926306459443:web:7950e0d4846c9457172846"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
 const app = getApps().length===0 ? initializeApp(firebaseConfig) : getApp();
