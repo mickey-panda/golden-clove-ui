@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^11.4.0",
     "framer-motion": "^12.4.7",
     "next": "15.2.0",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-before-after-slider-component": "^1.1.8",
     "react-dom": "^19.0.0",

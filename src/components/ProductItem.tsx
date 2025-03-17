@@ -1,18 +1,31 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useCart } from "@/contexts/CartContext";
 
 interface ProductItemProps {
   product: {
     id: number;
     name: string;
     image: string;
-    sizes: { size: string; price: string }[];
+    sizes: { size: string; price: number }[];
   };
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      image: product.image,
+      price: selectedSize.price,
+      size: selectedSize.size,
+      quantity: 1,
+    });
+  };
 
   return (
     <motion.div
@@ -53,11 +66,11 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 
       {/* Price Display */}
       <p className="text-gray-700 mt-1 text-sm font-semibold text-center">
-        {selectedSize.price}
+        ₹{selectedSize.price}
       </p>
 
       {/* Add to Cart Button */}
-      <button className="mt-2 w-full bg-yellow-500 text-white py-1 rounded-md text-sm hover:bg-yellow-600 transition">
+      <button onClick={handleAddToCart} className="mt-2 w-full bg-yellow-500 text-white py-1 rounded-md text-sm hover:bg-yellow-600 transition">
         Add to Cart
       </button>
     </motion.div>
