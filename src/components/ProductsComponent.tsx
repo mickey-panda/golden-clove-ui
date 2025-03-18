@@ -17,7 +17,7 @@ const ProductsComponent = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1500);
+    setTimeout(() => setLoading(false), 500);
   }, []);
 
   const filteredProducts = products.filter(

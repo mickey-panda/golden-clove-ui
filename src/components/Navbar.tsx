@@ -58,7 +58,7 @@ export default function Navbar() {
                 )}
               </div>
               <span className="text-white font-medium hidden md:block">
-                {user.displayName?.split(" ")[0] || "User"}
+                {user.displayName?.split(" ")[0] || user.phoneNumber}
               </span>
             </div>
           ) : (

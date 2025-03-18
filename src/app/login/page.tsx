@@ -79,7 +79,7 @@ export default function Login() {
       try {
         const confirmationResult = await signInWithPhoneNumber(
           auth,
-          phoneNumber,
+          "+91"+phoneNumber,
           recaptchaVerifier
         );
         setConfirmationResult(confirmationResult);
@@ -141,13 +141,25 @@ export default function Login() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <input
-              type="tel"
-              placeholder="Enter phone number"
-              className="w-full p-3 rounded-lg border border-gray-300 outline-none text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-yellow-500"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+            <div className="flex items-center w-full p-3 rounded-lg border border-gray-300 bg-white focus-within:ring-2 focus-within:ring-yellow-500">
+              {/* Fixed Country Code */}
+              <span className="text-gray-900 font-semibold text-lg mr-2">+91</span>
+
+              {/* Input for 10-digit number */}
+              <input
+                type="tel"
+                maxLength={10}
+                placeholder="Enter phone number"
+                className="w-full outline-none text-gray-900 placeholder-gray-500 bg-transparent"
+                value={phoneNumber}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric chars
+                  if (value.length <= 10) {
+                    setPhoneNumber(value);
+                  }
+                }}
+              />
+            </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
               Enter your phone number with country code.
             </p>
