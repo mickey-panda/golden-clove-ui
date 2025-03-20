@@ -2,8 +2,9 @@
 import { useState, useEffect, useTransition, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { auth } from "../../firebase/config";
-import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { getUser, registerUser } from "@/dbActions/users-actions";
 
 export default function Login() {
   const router = useRouter();
@@ -57,9 +58,27 @@ export default function Login() {
       }
 
       try {
-        await confirmationResult?.confirm(otp);
-        router.back();
-       
+        const creds = await confirmationResult?.confirm(otp);
+        const user = await getUser(creds?.user?.uid);
+        try {
+          if(!user){
+            const result = await registerUser({userId : creds?.user?.uid?.toString() ?? "", firstName: "", lastName:"", email:null, phoneNumber:creds?.user?.phoneNumber?.toString() ?? ""});
+            if(result){
+              alert("Signed up...");
+            }
+          }else{
+            setError("Signing in...");
+          }
+        } catch (error) {
+          console.log(error);
+          setError("Failed to signup.");
+          await signOut(auth).then(() => {
+            localStorage.clear();
+            sessionStorage.clear();
+          });
+        }finally{
+          router.back();
+        }
       } catch (err) {
         console.log(err);
         setError("Failed to verify your OTP, check again then try.");

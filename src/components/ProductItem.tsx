@@ -8,17 +8,18 @@ import { useMediaQuery } from "react-responsive";
 
 interface ProductItemProps {
   product: {
-    id: number;
+    productId: number;
     name: string;
     image: string;
-    sizes: { size: string; price: number }[];
+    sizes: unknown;
+    categories : unknown;
   };
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSizes, setSelectedSizes] = useState(
-    product.sizes.map((size) => ({ ...size, quantity: 0 }))
+    (product.sizes as {size : string, price: number}[]).map((size) => ({ ...size, quantity: 0 }))
   );
   const { addToCart } = useCart();
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -40,7 +41,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     selectedSizes.forEach((size) => {
       if (size.quantity > 0) {
         addToCart({
-          id: product.id,
+          id: product.productId,
           name: product.name,
           image: product.image,
           price: size.price,
