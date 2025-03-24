@@ -181,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* Where to find real cinnamon section */}
-      <section className="py-20 px-6">
+      {/* <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-900 mb-4">
             Where to Find Real Ceylon Cinnamon?
@@ -245,7 +245,81 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+      </section> */}
+
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold text-gray-900 mb-4">
+            Why Overpay for Ceylon Cinnamon?
+          </h2>
+          <p className="text-lg text-gray-700 mb-6">
+            Many sellers on marketplaces like Flipkart and Amazon list Sri Lankan Ceylon Cinnamon at **₹4 - ₹6 per gram** (as of March 2025).  
+            But why pay extra when you can get **100% pure, authentic Ceylon Cinnamon** at a much better price?
+          </p>
+
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="bg-white rounded-lg shadow-lg p-6 md:flex items-center justify-between"
+          >
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-yellow-700 mb-2">
+                Direct from Source, No Middlemen!
+              </h3>
+              <p className="text-gray-600">
+                At <span className="text-red-500 font-bold">Golden Clove</span>, we bring **farm-fresh Ceylon Cinnamon**  
+                straight to your doorstep—**without overpriced markups**.  
+              </p>
+              <p className="text-green-600 font-semibold mt-2">
+                ✅ Better quality, fresher stock, and unbeatable price!
+              </p>
+              <p className="mt-2 text-gray-700">
+                Why settle for ₹5.50/g when you can get it for just **₹2.35/g**?
+              </p>
+            </div>
+
+            <div className="flex justify-center mt-4 md:mt-0">
+              <Image
+                src="/realcinnamon.png"
+                width={250}
+                height={150}
+                alt="Ceylon Cinnamon vs Fake Cinnamon"
+                className="rounded-lg"
+              />
+            </div>
+          </motion.div>
+
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-red-100 p-4 rounded-lg shadow-md text-center"
+            >
+              <h3 className="text-lg font-semibold text-red-700">Amazon</h3>
+              <p className="text-gray-700">₹5.50/g <span className="text-xs">(as of March 2025)</span></p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-100 p-4 rounded-lg shadow-md text-center"
+            >
+              <h3 className="text-lg font-semibold text-gray-700">Flipkart</h3>
+              <p className="text-gray-700">₹4.75/g <span className="text-xs">(as of March 2025)</span></p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-green-100 p-4 rounded-lg shadow-md text-center"
+            >
+              <h3 className="text-lg font-semibold text-green-700">Golden Clove</h3>
+              <p className="text-green-700 text-xl font-bold">₹2.35/g</p>
+            </motion.div>
+          </div>
+
+          <p className="text-xs text-gray-500 mt-4">
+            *Prices based on marketplace listings as of March 2025 and may vary.
+          </p>
+        </div>
       </section>
+
 
       {/* customer review section */}
       <CustomerReviewSection />

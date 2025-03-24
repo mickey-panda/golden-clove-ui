@@ -5,6 +5,7 @@ import { auth } from "../../firebase/config";
 import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { getUser, registerUser } from "@/dbActions/users-actions";
+import { useNotification } from "@/contexts/NotificationProvider";
 
 export default function Login() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Login() {
   const [recaptchaVerifier, setRecaptchaVerifier] = useState<RecaptchaVerifier | null>(null);
   const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
   const [isPending, startTransition] = useTransition();
+  const {addNotification} = useNotification();
 
   
   useEffect(() => {
@@ -64,14 +66,15 @@ export default function Login() {
           if(!user){
             const result = await registerUser({userId : creds?.user?.uid?.toString() ?? "", firstName: "", lastName:"", email:null, phoneNumber:creds?.user?.phoneNumber?.toString() ?? ""});
             if(result){
-              alert("Signed up...");
+              addNotification("success","Signed up...");
             }
           }else{
-            setError("Signing in...");
+            addNotification("info","Signing in..");
           }
+          addNotification("success",`Hey ${creds.user.phoneNumber} Welcome to Golden Clove`);
         } catch (error) {
           console.log(error);
-          setError("Failed to signup.");
+          addNotification("error","Failed to signup.");
           await signOut(auth).then(() => {
             localStorage.clear();
             sessionStorage.clear();
@@ -81,7 +84,7 @@ export default function Login() {
         }
       } catch (err) {
         console.log(err);
-        setError("Failed to verify your OTP, check again then try.");
+        addNotification("error","Failed to verify your OTP, check again then try.");
       }
     });
   };

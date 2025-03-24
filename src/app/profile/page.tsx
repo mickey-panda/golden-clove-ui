@@ -108,9 +108,9 @@ const Profile = () => {
             >
             {isUpdating && (
                 <div className="flex items-center justify-center">
-                <p className="text-yellow-500 text-center mt-4 mr-8">Updating your profile </p>
-                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-yellow-500"></div>
-            </div>
+                    <p className="text-yellow-500 text-center mt-4 mr-8">Updating your profile </p>
+                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-yellow-500"></div>
+                </div>
             )}
             {isUpdateError && (
                 <div className="flex items-center justify-center">

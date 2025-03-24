@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useCart } from "@/contexts/CartContext";
+// import { useCart } from "@/contexts/CartContext";
 import { Dialog, DialogPanel, DialogTitle, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useAuth } from "@/contexts/AuthProvider";
+import { createCart, getCart } from "@/dbActions/cart-actions";
+import { addOrUpdateCartItems } from "@/dbActions/cartItems-actions";
+import { useNotification } from "@/contexts/NotificationProvider";
 
 interface ProductItemProps {
   product: {
@@ -16,15 +20,39 @@ interface ProductItemProps {
   };
 }
 
+interface CartItem {
+  cartId: number;
+  productId: number;
+  selectedSize: string;
+  quantity: number;
+  pricePerUnit: number; // Ensure it's a number
+  totalPrice: number; // Ensure it's a number
+}
+
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSizes, setSelectedSizes] = useState(
     (product.sizes as {size : string, price: number}[]).map((size) => ({ ...size, quantity: 0 }))
   );
-  const { addToCart } = useCart();
+  const[userId, setUserId] = useState("");
+  // const { addToCart } = useCart();
+  const {user} =useAuth();
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const {addNotification} = useNotification();
 
-  const openModal = () => setIsOpen(true);
+  useEffect(()=>{
+    if(user){
+      setUserId(user?.uid);
+    }
+  },[user]);
+
+  const openModal = () =>{
+    if(!user){
+      addNotification("error", "Please Login before adding items to your cart.");
+      return;
+    }
+    setIsOpen(true);
+  };
   const closeModal = () => setIsOpen(false);
 
   const handleQuantityChange = (sizeIndex: number, change: number) => {
@@ -37,21 +65,45 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     );
   };
 
-  const handleAddToCart = () => {
-    selectedSizes.forEach((size) => {
-      if (size.quantity > 0) {
-        addToCart({
-          id: product.productId,
-          name: product.name,
-          image: product.image,
-          price: size.price,
-          size: size.size,
-          quantity: size.quantity,
-        });
+  const handleAddToCart = async () => {
+    if (!userId) {
+      addNotification("error","Login to add items to your cart.");
+      return;
+    }
+  
+    try {
+      // Fetch or create cart for user
+      let cartData = await getCart(userId);
+      if (!cartData) {
+        cartData = await createCart(userId);
       }
-    });
-    closeModal();
+  
+      const cartId = cartData.cartId;
+  
+      // Prepare cart items
+      const cartItems: CartItem[] = selectedSizes
+        .filter((size) => size.quantity > 0) // Only add sizes with quantity > 0
+        .map((size) => ({
+          cartId: cartId,
+          productId: product.productId,
+          selectedSize: size.size,
+          quantity: size.quantity,
+          pricePerUnit: size.price, // Keep as number
+          totalPrice: size.price * size.quantity, // Keep as number
+        }));
+  
+      // Add items to cart_items table
+      await addOrUpdateCartItems(cartItems);
+  
+      // Close modal after successful addition
+      closeModal();
+      addNotification("success","Items are added to cart.");
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      addNotification("error","Something went wrong, Items are not added to cart.");
+    }
   };
+  
 
   return (
     <div>

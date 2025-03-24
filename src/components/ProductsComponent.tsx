@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import { motion } from "framer-motion";
 import FloatingCartButton from "./FloatingCartButton";
 import { getProducts } from "@/dbActions/products-actions";
+import { useAuth } from "@/contexts/AuthProvider";
 
 const categories = ["All", "Whole Spice", "Pure Spice", "Blended Spice"];
 interface Product {
@@ -22,6 +23,7 @@ const ProductsComponent = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const[products, setProducts] = useState<Product[]>([]);
+  const {user} = useAuth();
 
   useEffect(() => {
     setLoading(true);
@@ -54,7 +56,10 @@ const ProductsComponent = () => {
       <CategoryList categories={categories} selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
 
       <ProductGrid products={filteredProducts} loading={loading} />
-      <FloatingCartButton/>
+      {user && (
+        <FloatingCartButton/>
+      )}
+      
     </div>
   );
 };
