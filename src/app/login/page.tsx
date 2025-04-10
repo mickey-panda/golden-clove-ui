@@ -2,8 +2,10 @@
 import { useState, useEffect, useTransition, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { auth } from "../../firebase/config";
-import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { getUser, registerUser } from "@/dbActions/users-actions";
+import { useNotification } from "@/contexts/NotificationProvider";
 
 export default function Login() {
   const router = useRouter();
@@ -15,6 +17,7 @@ export default function Login() {
   const [recaptchaVerifier, setRecaptchaVerifier] = useState<RecaptchaVerifier | null>(null);
   const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
   const [isPending, startTransition] = useTransition();
+  const {addNotification} = useNotification();
 
   
   useEffect(() => {
@@ -57,12 +60,31 @@ export default function Login() {
       }
 
       try {
-        await confirmationResult?.confirm(otp);
-        router.back();
-       
+        const creds = await confirmationResult?.confirm(otp);
+        const user = await getUser(creds?.user?.uid);
+        try {
+          if(!user){
+            const result = await registerUser({userId : creds?.user?.uid?.toString() ?? "", firstName: "", lastName:"", email:null, phoneNumber:creds?.user?.phoneNumber?.toString() ?? ""});
+            if(result){
+              addNotification("success","Signed up...");
+            }
+          }else{
+            addNotification("info","Signing in..");
+          }
+          addNotification("success",`Hey ${creds.user.phoneNumber} Welcome to Golden Clove`);
+        } catch (error) {
+          console.log(error);
+          addNotification("error","Failed to signup.");
+          await signOut(auth).then(() => {
+            localStorage.clear();
+            sessionStorage.clear();
+          });
+        }finally{
+          router.back();
+        }
       } catch (err) {
         console.log(err);
-        setError("Failed to verify your OTP, check again then try.");
+        addNotification("error","Failed to verify your OTP, check again then try.");
       }
     });
   };
@@ -79,7 +101,7 @@ export default function Login() {
       try {
         const confirmationResult = await signInWithPhoneNumber(
           auth,
-          phoneNumber,
+          "+91"+phoneNumber,
           recaptchaVerifier
         );
         setConfirmationResult(confirmationResult);
@@ -141,13 +163,25 @@ export default function Login() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <input
-              type="tel"
-              placeholder="Enter phone number"
-              className="w-full p-3 rounded-lg border border-gray-300 outline-none text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-yellow-500"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+            <div className="flex items-center w-full p-3 rounded-lg border border-gray-300 bg-white focus-within:ring-2 focus-within:ring-yellow-500">
+              {/* Fixed Country Code */}
+              <span className="text-gray-900 font-semibold text-lg mr-2">+91</span>
+
+              {/* Input for 10-digit number */}
+              <input
+                type="tel"
+                maxLength={10}
+                placeholder="Enter phone number"
+                className="w-full outline-none text-gray-900 placeholder-gray-500 bg-transparent"
+                value={phoneNumber}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric chars
+                  if (value.length <= 10) {
+                    setPhoneNumber(value);
+                  }
+                }}
+              />
+            </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
               Enter your phone number with country code.
             </p>

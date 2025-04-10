@@ -1,40 +1,38 @@
 const PrivacyPolicyComponent = () => {
     return (
-      <div className="bg-white shadow-lg rounded-lg p-6 md:p-10 max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 text-center">Privacy Policy</h1>
-        <p className="mt-4 text-gray-700">
-          At Golden Clove, we respect your privacy and are committed to protecting your personal 
-          information. This Privacy Policy explains how we collect, use, and safeguard your data.
+      <div className="bg-white p-6 md:p-8 max-w-3xl mx-auto rounded-lg">
+        <h1 className="text-2xl font-light text-gray-800 text-center tracking-wide">Your Privacy, Our Pledge</h1>
+        <p className="mt-3 text-sm text-gray-600 text-center">
+          Golden Clove values your trust. This outlines how we handle your data with care.
         </p>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">Information We Collect</h2>
-        <ul className="list-disc pl-6 mt-2 text-gray-700">
-          <li>Personal details (name, email, phone number) provided during registration.</li>
-          <li>Payment information for order processing (secured by third-party gateways).</li>
-          <li>Website usage data, such as browsing behavior and IP address.</li>
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">What We Collect</h2>
+        <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
+          <li>Name, email, and phone number from registration.</li>
+          <li>Payment details via secure third-party gateways.</li>
+          <li>Browsing data, like IP address and usage patterns.</li>
         </ul>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">How We Use Your Information</h2>
-        <ul className="list-disc pl-6 mt-2 text-gray-700">
-          <li>To process and deliver your orders.</li>
-          <li>To improve our services based on user feedback.</li>
-          <li>To send promotional emails (if you opt-in).</li>
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">How We Use It</h2>
+        <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
+          <li>To fulfill and deliver your orders.</li>
+          <li>To refine our services with your input.</li>
+          <li>To share offers, if you choose to receive them.</li>
         </ul>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">Data Protection</h2>
-        <p className="mt-2 text-gray-700">
-          We implement strict security measures to prevent unauthorized access to your information. Your 
-          payment details are processed through trusted third-party services.
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Safeguarding Your Data</h2>
+        <p className="mt-2 text-sm text-gray-600">
+          We use robust security to protect your information. Payments are handled by trusted partners.
         </p>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">Your Rights</h2>
-        <ul className="list-disc pl-6 mt-2 text-gray-700">
-          <li>You can request to view, update, or delete your personal data.</li>
-          <li>You can opt out of marketing communications at any time.</li>
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Your Choices</h2>
+        <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
+          <li>View, edit, or remove your data on request.</li>
+          <li>Opt out of marketing anytime.</li>
         </ul>
-  
-        <p className="mt-6 text-gray-700">
-          For any privacy-related queries, please contact <strong>privacy@goldenclove.com</strong>.
+
+        <p className="mt-5 text-sm text-gray-600 text-center">
+          Questions? Reach <span className="font-medium">sales.goldenclove@gmail.com</span>.
         </p>
       </div>
     );
