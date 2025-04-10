@@ -1,18 +1,25 @@
 const RefundPolicyComponent = () => {
     return (
       <div className="bg-white p-6 md:p-8 max-w-3xl mx-auto rounded-lg">
-        <h1 className="text-2xl font-light text-gray-800 text-center tracking-wide">Our Refund Commitment</h1>
+        <h1 className="text-2xl font-light text-gray-800 text-center tracking-wide">Our Shipping and Refund Commitment</h1>
         <p className="mt-3 text-sm text-gray-600 text-center">
-          At Golden Clove, your satisfaction matters. Refunds or replacements apply under these terms.
+          At Golden Clove, your satisfaction matters. Shipping, Refunds or replacements apply under these terms.
         </p>
 
-        <h2 className="mt-5 text-lg font-medium text-gray-800">Eligibility</h2>
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Shipping Policy</h2>
         <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
-          <li>Valid for defective, damaged, or incorrect items.</li>
-          <li>Request within 7 days of delivery.</li>
-          <li>Items must be unused, in original packaging, with proof of purchase.</li>
+          <li>Once an order is placed, it will be confirmed within the next 12 hours.</li>
+          <li>Orders will be shipped via our third-party shipping partners.</li>
+          <li>Items will be shipped within 4-5 days.</li>
+          <li>Delays in shipping may occur due to bank or government holidays, or other unforeseen circumstances.</li>
         </ul>
 
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Return and Refund Policy</h2>
+        <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
+          <li>Return or refund requests can be raised within 3 days of order delivery.</li>
+          <li>Upon verification of eligibility, refunds will be processed within 3-4 working days.</li>
+          <li>Refunds will be credited to the original payment method within 3-4 days of confirmation.</li>
+        </ul>
         <h2 className="mt-5 text-lg font-medium text-gray-800">Process</h2>
         <p className="mt-2 text-sm text-gray-600">
           Email <span className="font-medium">sales.goldenclove@gmail.com</span> with order details and defect images. Refunds process in 7-10 business days after verification.
