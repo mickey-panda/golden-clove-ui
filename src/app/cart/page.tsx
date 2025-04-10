@@ -1,6 +1,7 @@
 "use client";
 import CartComponent from "@/components/CartComponent";
 import Navbar from "../../components/Navbar";
+import Footer from "@/components/Footer";
 
 const cart = () =>{
     return(
@@ -16,9 +17,7 @@ const cart = () =>{
             </main>
     
             {/* Footer - Fixed at Bottom */}
-            <footer className="bg-gray-800 text-gray-400 text-center py-4 text-sm">
-                © 2025 Golden Clove. All rights reserved.
-            </footer>
+            <Footer/>
     </div>
     );
 };

@@ -4,25 +4,40 @@ import { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
 import ProductGrid from "./ProductGrid";
 import SearchBar from "./SearchBar";
-import products from "../data/products"
 import { motion } from "framer-motion";
 import FloatingCartButton from "./FloatingCartButton";
+import { getProducts } from "@/dbActions/products-actions";
+import { useAuth } from "@/contexts/AuthProvider";
 
 const categories = ["All", "Whole Spice", "Pure Spice", "Blended Spice"];
-
+interface Product {
+  productId : number,
+  name: string;
+  image: string;
+  sizes: unknown; // Array of objects with size & price
+  categories: unknown; // Array of category names
+}
 
 const ProductsComponent = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const[products, setProducts] = useState<Product[]>([]);
+  const {user} = useAuth();
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1500);
-  }, []);
+    setLoading(true);
+    getAllProducts();
+    setLoading(false);
+  },[]);
 
+  const getAllProducts = async()=>{
+    const productsRetrieved = await getProducts();
+    setProducts(productsRetrieved);
+  }
   const filteredProducts = products.filter(
     (product) =>
-      (selectedCategory === "All" || product.categories.includes(selectedCategory)) &&
+      (selectedCategory === "All" || (product.categories as string[]).includes(selectedCategory)) &&
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -39,9 +54,11 @@ const ProductsComponent = () => {
 
       <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
       <CategoryList categories={categories} selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
-
       <ProductGrid products={filteredProducts} loading={loading} />
-      <FloatingCartButton/>
+      {user && (
+        <FloatingCartButton/>
+      )}
+      
     </div>
   );
 };

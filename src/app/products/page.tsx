@@ -2,8 +2,33 @@
 import Footer from "@/components/Footer";
 import Navbar from "../../components/Navbar";
 import ProductsComponent from "../../components/ProductsComponent";
+import { useEffect } from "react";
+import { useAuth } from "@/contexts/AuthProvider";
+import { createCart, getCart } from "@/dbActions/cart-actions";
 
-const shop = () =>{
+export default function Shop(){
+    const {user} = useAuth();
+    useEffect(()=>{
+        let isMounted = true;
+        if(user){
+            getCart(user.uid)
+            .then((result)=>{
+                if(result || !isMounted){
+                    return;
+                }
+                
+                createCart(user.uid)
+                .then((value)=>console.log(value.cartId))
+                .catch((error)=>console.log(error));
+                    
+            })
+            .catch((error)=>console.log(error));
+        }
+        return () => {
+            isMounted = false; // Prevent duplicate API calls on re-renders
+        };
+    },[user?.uid]);
+
     return(
         <div className="flex flex-col min-h-screen bg-gray-100 text-gray-900">
             {/* Navbar */}
@@ -20,6 +45,4 @@ const shop = () =>{
             <Footer/>
     </div>
     );
-};
-
-export default shop;
+}

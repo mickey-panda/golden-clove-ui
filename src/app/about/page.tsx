@@ -15,98 +15,85 @@ const About = () => {
       </div>
 
       <main className="flex-1 pt-16 px-4 sm:px-6 lg:px-8">
-        <section className="text-center py-20">
+        <section className="text-center py-16 bg-gray-50">
             <motion.h1
-            className="text-4xl font-bold text-yellow-600"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+                className="text-3xl font-light text-gray-800 tracking-wide"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
             >
-            Our Story, Our Promise
+                Our Essence, Our Craft
             </motion.h1>
-            <p className="mt-5 text-xl text-gray-700 max-w-3xl mx-auto">
-            At Golden Clove, we don’t just sell spices—we bring **authentic flavors** to your kitchen. 
-            Every spice tells a story of purity, tradition, and commitment to quality.
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Golden Clove curates spices that whisper tradition and purity—elevating every dish with timeless flavor.
             </p>
         </section>
 
         {/* Mission Section */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-8 py-16">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-6 py-14 bg-white">
             <div>
-            <h2 className="text-4xl font-bold text-gray-900">Our Mission</h2>
-            <p className="mt-5 text-lg text-gray-700 leading-relaxed">
-                In an era where food is often compromised, Golden Clove stands as a symbol of **authenticity**. 
-                We are on a mission to **revolutionize the spice industry**—one where consumers no longer 
-                have to question the purity of their ingredients.  
-                <br /><br />
-                Our commitment? **100% natural, chemical-free, and ethically sourced spices** that don’t just enhance 
-                taste but also **preserve health**.
-            </p>
+                <h2 className="text-3xl font-light text-gray-800 tracking-wide">Our Purpose</h2>
+                <p className="mt-4 text-base text-gray-600 max-w-md leading-relaxed">
+                Golden Clove redefines purity in a world of compromise. We curate spices that honor tradition, 
+                ensuring every pinch is natural, ethical, and vital to your well-being.
+                </p>
             </div>
 
-            {/* Stats Block with a Modern Look */}
-            <div className="bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800 p-8 rounded-2xl shadow-lg text-center">
-            <h3 className="text-2xl font-semibold text-white drop-shadow-lg">Why Choose Golden Clove?</h3>
-            <div className="mt-6 space-y-5">
-                <p className="text-white text-lg font-medium"><strong className="text-2xl">100%</strong> Natural & Pure Spices</p>
-                <p className="text-white text-lg font-medium"><strong className="text-2xl">0%</strong> Artificial Colors & Additives</p>
-                <p className="text-white text-lg font-medium"><strong className="text-2xl">10,000+</strong> Satisfied Customers</p>
-                <p className="text-white text-lg font-medium"><strong className="text-2xl">12+</strong> Years of Expertise in Spices</p>
-            </div>
+            {/* Stats Block */}
+            <div className="bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 p-6 rounded-xl shadow-sm text-center">
+                <h3 className="text-xl font-medium text-gray-800">Why Golden Clove?</h3>
+                <div className="mt-5 space-y-4">
+                <p className="text-gray-700 text-base"><span className="font-semibold text-lg">100%</span> Pure Spices</p>
+                <p className="text-gray-700 text-base"><span className="font-semibold text-lg">0%</span> Additives</p>
+                <p className="text-gray-700 text-base"><span className="font-semibold text-lg">10,000+</span> Happy Customers</p>
+                <p className="text-gray-700 text-base"><span className="font-semibold text-lg">12+</span> Years of Craft</p>
+                </div>
             </div>
         </section>
 
         {/* Market Problem & Solution Section */}
-        <section className="bg-gray-100 p-12 rounded-xl shadow-md mt-16">
-            <h2 className="text-4xl font-semibold text-center text-gray-900">The Market Challenge</h2>
-            <p className="mt-5 text-lg text-center text-gray-700 leading-relaxed">
-            Many commercial spice brands **compromise quality** by using **synthetic colors, preservatives, and 
-            adulterants**. Consumers unknowingly buy spices that have lost their **true aroma, nutrients, and purity**.
+        <section className="bg-gray-50 p-10 rounded-lg mt-12">
+            <h2 className="text-3xl font-light text-center text-gray-800 tracking-wide">The Purity Divide</h2>
+            <p className="mt-4 text-base text-center text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Many spices lose their essence to synthetic additives and adulteration, leaving flavor and purity behind.
             </p>
 
             {/* Solution Section */}
-            <div className="mt-12 bg-white p-8 rounded-lg shadow-lg text-center">
-            <h3 className="text-3xl font-semibold text-yellow-700">Golden Clove: The Purity You Deserve</h3>
-            <p className="mt-4 text-lg text-gray-700 leading-relaxed">
-                Our spices are **sourced directly from farmers**, undergo **rigorous purity checks**, and are packaged 
-                without any chemicals or additives.  
-                <br /><br />
-                Every pinch of Golden Clove’s spice **elevates the taste of your meals naturally**—the way it should be.
-            </p>
+            <div className="mt-8 bg-white p-6 rounded-lg text-center">
+                <h3 className="text-xl font-medium text-gray-800">Golden Clove’s Promise</h3>
+                <p className="mt-3 text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                Sourced from farmers and tested for purity, our spices bring natural flavor to every dish—untouched by chemicals.
+                </p>
             </div>
         </section>
 
-        {/* Market Problem & Solution Section */}
-        {/* <ComparisonTable/> */}
-
         {/* Vision Section */}
-        <section className="mt-20 bg-yellow-600 text-white py-16 text-center">
-            <h2 className="text-4xl font-bold">Our Vision</h2>
-            <p className="mt-5 text-lg max-w-3xl mx-auto leading-relaxed">
-            To redefine how the world experiences spices—ensuring that every home has access to **pure, aromatic, and 
-            nutrient-rich** ingredients, without compromise.
+        <section className="mt-12 bg-gray-50 py-12 text-center">
+            <h2 className="text-3xl font-light text-gray-800 tracking-wide">Our Vision Unveiled</h2>
+            <p className="mt-4 text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                To bring pure, aromatic spices to every table—uncompromised and timeless.
             </p>
         </section>
 
         {/* Team Section */}
-        <section className="mt-16 mb-8 px-6">
-            <h2 className="text-3xl font-semibold text-center text-gray-900">Meet Our Team</h2>
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8 place-items-center">
+        <section className="mt-12 mb-6 px-4">
+            <h2 className="text-2xl font-light text-center text-gray-800 tracking-wide">Our Artisans</h2>
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-6 place-items-center">
                 {teamMembers.map((member, index) => (
-                <motion.div 
-                    key={index} 
-                    className="bg-white/90 backdrop-blur-lg p-4 rounded-xl shadow-lg text-center w-64 border border-gray-200 hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.05 }}
+                <motion.div
+                    key={index}
+                    className="bg-white p-4 rounded-lg text-center w-60"
+                    whileHover={{ scale: 1.03 }}
                 >
-                    <Image 
-                    src={member.image} 
-                    alt={member.name} 
-                    width={250} 
-                    height={160} 
-                    className="rounded-lg mx-auto object-cover shadow-md w-full h-40" 
+                    <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={200}
+                    height={140}
+                    className="rounded-md mx-auto object-cover w-full h-36"
                     />
-                    <h3 className="mt-3 text-lg font-semibold text-gray-900">{member.name}</h3>
-                    <p className="text-gray-600 text-sm">{member.role}</p>
+                    <h3 className="mt-2 text-base font-medium text-gray-800">{member.name}</h3>
+                    <p className="text-gray-600 text-xs">{member.role}</p>
                 </motion.div>
                 ))}
             </div>

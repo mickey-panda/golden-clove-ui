@@ -8,16 +8,19 @@ import { auth } from "../firebase/config";
 import { signOut } from "firebase/auth";
 import Image from "next/image";
 import { useAuth } from "@/contexts/AuthProvider";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const {user}=useAuth();
+  const router = useRouter();
 
   const handleLogout = async () => {
     await signOut(auth).then(() => {
       localStorage.clear();
       sessionStorage.clear();
+      router.push('/');
     });
   };
 
@@ -58,7 +61,7 @@ export default function Navbar() {
                 )}
               </div>
               <span className="text-white font-medium hidden md:block">
-                {user.displayName?.split(" ")[0] || "User"}
+                {user.displayName?.split(" ")[0] || user.phoneNumber}
               </span>
             </div>
           ) : (
