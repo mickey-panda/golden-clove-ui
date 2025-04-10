@@ -1,35 +1,31 @@
 const RefundPolicyComponent = () => {
     return (
-      <div className="bg-white shadow-lg rounded-lg p-6 md:p-10 max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 text-center">Refund Policy</h1>
-        <p className="mt-4 text-gray-700">
-          At Golden Clove, we strive to ensure the satisfaction of our customers. If you are not 
-          satisfied with your purchase, you may be eligible for a refund or replacement, subject to the 
-          following conditions.
+      <div className="bg-white p-6 md:p-8 max-w-3xl mx-auto rounded-lg">
+        <h1 className="text-2xl font-light text-gray-800 text-center tracking-wide">Our Refund Commitment</h1>
+        <p className="mt-3 text-sm text-gray-600 text-center">
+          At Golden Clove, your satisfaction matters. Refunds or replacements apply under these terms.
         </p>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">Eligibility for Refund</h2>
-        <ul className="list-disc pl-6 mt-2 text-gray-700">
-          <li>Refunds are only applicable for defective, damaged, or incorrect items received.</li>
-          <li>Requests must be made within 7 days of receiving the product.</li>
-          <li>Products must be unused, in their original packaging, and returned with proof of purchase.</li>
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Eligibility</h2>
+        <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
+          <li>Valid for defective, damaged, or incorrect items.</li>
+          <li>Request within 7 days of delivery.</li>
+          <li>Items must be unused, in original packaging, with proof of purchase.</li>
         </ul>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">Refund Process</h2>
-        <p className="mt-2 text-gray-700">
-          To request a refund, please contact us at <strong>support@goldenclove.com</strong> with 
-          your order details and images of the defective product. Upon verification, a refund will be processed 
-          within 7-10 business days.
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Process</h2>
+        <p className="mt-2 text-sm text-gray-600">
+          Email <span className="font-medium">sales.goldenclove@gmail.com</span> with order details and defect images. Refunds process in 7-10 business days after verification.
         </p>
-  
-        <h2 className="mt-6 text-2xl font-semibold text-gray-900">Exceptions</h2>
-        <ul className="list-disc pl-6 mt-2 text-gray-700">
-          <li>Opened or used products are not eligible for refunds.</li>
-          <li>Refunds are not applicable for sale items or promotional offers.</li>
+
+        <h2 className="mt-5 text-lg font-medium text-gray-800">Exceptions</h2>
+        <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
+          <li>No refunds for opened or used items.</li>
+          <li>Sale or promotional items excluded.</li>
         </ul>
-  
-        <p className="mt-6 text-gray-700">
-          If you have any concerns, please reach out to us at <strong>support@goldenclove.com</strong>.
+
+        <p className="mt-5 text-sm text-gray-600 text-center">
+          Questions? Contact <span className="font-medium">sales.goldenclove@gmail.com</span>.
         </p>
       </div>
     );

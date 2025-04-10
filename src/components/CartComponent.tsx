@@ -3,13 +3,14 @@
 import { useCart } from "@/contexts/CartContext";
 import Image from "next/image";
 import Link from "next/link";
-import { FaTrash, FaShoppingCart, FaRegAddressBook, FaInfoCircle } from "react-icons/fa";
+import { FaTrash, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthProvider";
 import { useEffect,useState } from "react";
 import { createCart, getCart } from "@/dbActions/cart-actions";
 import { clearCart, getCartItems, increaseCartItem, reduceCartItem, removeCartItem } from "@/dbActions/cartItems-actions";
 import { useNotification } from "@/contexts/NotificationProvider";
+import CheckoutComponent from "./CheckoutComponent";
 
 interface CartItem {
   cartId: number;
@@ -179,6 +180,7 @@ const CartComponent = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-8">
+      {/* Cart loader */}
       {isLoading && (
           <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
               <p className="text-yellow-500 text-center mt-4 mr-8">Loading your cart. </p>
@@ -200,8 +202,8 @@ const CartComponent = () => {
       )}
       {/* Cart Items Section */}
       {!isLoading && cartItems?.length!==0 && (
-        <div className="w-full md:w-2/3 bg-white p-6 rounded-2xl shadow-xl overflow-hidden">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">Your Shopping Cart</h2>
+        <div className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-xl overflow-hidden">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800">Cart total ₹{cartTotal}</h2>
         <div className="space-y-6 overflow-y-auto max-h-[60vh]">
           {cartItems?.map((item) => (
             <motion.div
@@ -247,6 +249,16 @@ const CartComponent = () => {
         </div>
       </div>
       )}
+
+      {/* Address selection section */}
+      {!isLoading && cartItems?.length!==0 && (
+        <div className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-xl">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800">Select Delivery Address</h2>
+        <div className="space-y-6 overflow-y-auto max-h-[60vh] ">
+         <CheckoutComponent/>
+        </div>
+      </div>
+      )}
       
 
       {/* Proceed to Checkout Section */}
@@ -276,18 +288,17 @@ const CartComponent = () => {
           >
             Clear Cart
           </button>
-      
-          <button
-            onClick={() => alert("Payment Integration Coming Soon!")}
-            className="w-full flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 backdrop-blur-md border border-green-400"
-          >
-            <FaRegAddressBook className="mr-2 text-lg" /> Checkout
-          </button>
-      
+          
+            <button
+              className="w-full flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 backdrop-blur-md border border-green-400"
+            >
+              Procced to pay ₹{total}
+            </button>
+          
           {/* Updated Checkout Message */}
           <div className="mt-4 flex items-center bg-blue-50 text-blue-600 text-sm p-3 rounded-lg shadow-md">
             <FaInfoCircle className="mr-2 text-lg" />
-            <p>Proceed to checkout to select your delivery address and payment method.</p>
+            <p>Payment system is not yet integrated. Soon it will be integrated with Phonepe PG.</p>
           </div>
         </div>
       </div>

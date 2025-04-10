@@ -21,7 +21,7 @@ interface Product {
 const ProductsComponent = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const[products, setProducts] = useState<Product[]>([]);
   const {user} = useAuth();
 
@@ -29,7 +29,7 @@ const ProductsComponent = () => {
     setLoading(true);
     getAllProducts();
     setLoading(false);
-  }, []);
+  },[]);
 
   const getAllProducts = async()=>{
     const productsRetrieved = await getProducts();
@@ -54,7 +54,6 @@ const ProductsComponent = () => {
 
       <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
       <CategoryList categories={categories} selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
-
       <ProductGrid products={filteredProducts} loading={loading} />
       {user && (
         <FloatingCartButton/>
