@@ -34,6 +34,13 @@ const RefundPolicyComponent = () => {
         <p className="mt-5 text-sm text-gray-600 text-center">
           Questions? Contact <span className="font-medium">sales.goldenclove@gmail.com</span>.
         </p>
+
+        <p className="mt-5 text-sm text-gray-600 text-center">
+          <span className="font-medium">Founder</span> : Gitanjali Panda
+        </p>
+        <p className="mt-5 text-sm text-gray-600 text-center">
+          <span className="font-medium">Fssai</span> : 22025038000018
+        </p>
       </div>
     );
   };
