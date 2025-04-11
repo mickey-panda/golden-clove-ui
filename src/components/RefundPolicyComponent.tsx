@@ -17,6 +17,7 @@ const RefundPolicyComponent = () => {
         <h2 className="mt-5 text-lg font-medium text-gray-800">Return and Refund Policy</h2>
         <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
           <li>Return or refund requests can be raised within 3 days of order delivery.</li>
+          <li>Item replacement can be done within 3-5 working days after order delivery if there is any issue with the delivered products.</li>
           <li>Upon verification of eligibility, refunds will be processed within 3-4 working days.</li>
           <li>Refunds will be credited to the original payment method within 3-4 days of confirmation.</li>
         </ul>
