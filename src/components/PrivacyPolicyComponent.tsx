@@ -50,16 +50,6 @@ const PrivacyPolicyComponent = () => {
         <p className="mt-2 text-sm text-gray-600">
           Please review our Privacy Policy periodically for updates. We may modify this Privacy Policy to reflect changes in our information practices. We may notify you of significant changes as required by applicable laws.
         </p>
-
-        <h2 className="mt-5 text-lg font-medium text-gray-800">Grievance Officer</h2>
-        <p className="mt-2 text-sm text-gray-600">
-          Pradeepta kumar panda<br />
-          Designation: Tech and marketing<br />
-          Name and Address of the Company: Golden Clove, House number 20, Sidhartha nagar 2nd lane, Berhampur, 760004<br />
-          Contact us:<br />
-          Phone: 8658276477, 7381400960<br />
-          Time: Monday - Friday (9:00 - 18:00)
-        </p>
         <p className="mt-5 text-sm text-gray-600 text-center">
           Questions? Reach <span className="font-medium">sales.goldenclove@gmail.com</span>.
         </p>
