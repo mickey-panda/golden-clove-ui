@@ -17,6 +17,7 @@ interface ProductItemProps {
     image: string;
     sizes: unknown;
     categories : unknown;
+    description : string | null;
   };
 }
 
@@ -46,13 +47,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     }
   },[user]);
 
-  const openModal = () =>{
-    if(!user){
-      addNotification("error", "Please Login before adding items to your cart.");
-      return;
-    }
-    setIsOpen(true);
-  };
+  const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
   const handleQuantityChange = (sizeIndex: number, change: number) => {
@@ -140,50 +135,57 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
           className="relative z-50"
           onClose={closeModal}
         >
-          {/* Improved Background Overlay */}
-          <div className="fixed inset-0 bg-gray-700 opacity-80" />
+          {/* Background Overlay */}
+          <div className="fixed inset-0 bg-gray-700 opacity-70" />
 
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <DialogPanel
               className={`${
-                isMobile ? "bottom-0 absolute w-full" : "w-96"
-              } bg-white p-4 rounded-lg shadow-xl max-h-[90vh] overflow-y-auto`}
+                isMobile ? "bottom-0 absolute w-full" : "w-80"
+              } bg-white p-5 rounded-md max-h-[85vh] overflow-y-auto`}
             >
-              <div className="w-full h-36 flex items-center justify-center py-2">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={100}
-                  height={100}
-                  className="rounded-md object-contain"
-                />
+              {/* Image and Description Row */}
+              <div className="flex w-full mb-3">
+                <div className="w-[30%] flex items-center justify-center">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={90}
+                    height={90}
+                    className="rounded-sm object-contain"
+                  />
+                </div>
+                <div className="w-[70%] flex items-center">
+                  <p className="text-sm text-gray-600 text-center">{product.description}</p>
+                </div>
               </div>
-              {/* Updated Title Text */}
-              <DialogTitle className="text-lg font-semibold text-center text-gray-900">
-                {product.name} - Select option 
+
+              {/* Title */}
+              <DialogTitle className="text-base font-medium text-center text-gray-800">
+                {product.name} - Options
               </DialogTitle>
 
-              <div className="mt-4 space-y-3">
+              {/* Size Selection */}
+              <div className="mt-3 space-y-2">
                 {selectedSizes.map((size, index) => (
                   <div
                     key={size.size}
-                    className="flex items-center justify-between border-b pb-2"
+                    className="flex items-center justify-between pb-2 border-b border-gray-100"
                   >
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm text-gray-600">
                       {size.size} - ₹{size.price}
                     </span>
-
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2">
                       <button
                         onClick={() => handleQuantityChange(index, -1)}
-                        className="bg-yellow-500 px-2 py-1 rounded-md hover:bg-yellow-700"
+                        className="bg-yellow-500 px-1.5 py-0.5 rounded-sm text-white hover:bg-yellow-600"
                       >
                         -
                       </button>
-                      <span className="font-semibold text-gray-800">{size.quantity}</span>
+                      <span className="text-sm text-gray-800">{size.quantity}</span>
                       <button
                         onClick={() => handleQuantityChange(index, 1)}
-                        className="bg-yellow-500 px-2 py-1 rounded-md hover:bg-yellow-700"
+                        className="bg-yellow-500 px-1.5 py-0.5 rounded-sm text-white hover:bg-yellow-600"
                       >
                         +
                       </button>
@@ -195,7 +197,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
               {/* Add to Cart Button */}
               <button
                 onClick={handleAddToCart}
-                className="mt-4 w-full bg-yellow-500 text-white py-2 rounded-md text-sm hover:bg-yellow-600 transition"
+                className="mt-4 w-full bg-yellow-500 text-white py-1.5 rounded-sm text-sm hover:bg-yellow-600"
               >
                 Add to Cart
               </button>

@@ -10,7 +10,7 @@ const RefundPolicyComponent = () => {
         <ul className="list-disc pl-5 mt-2 text-sm text-gray-600">
           <li>Once an order is placed, it will be confirmed within the next 12 hours.</li>
           <li>Orders will be shipped via our third-party shipping partners.</li>
-          <li>Items will be shipped within 4-5 days.</li>
+          <li>Items will be delivered within 4-5 days.</li>
           <li>Delays in shipping may occur due to bank or government holidays, or other unforeseen circumstances.</li>
         </ul>
 

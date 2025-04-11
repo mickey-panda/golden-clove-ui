@@ -16,6 +16,7 @@ interface Product {
   image: string;
   sizes: unknown; // Array of objects with size & price
   categories: unknown; // Array of category names
+  description: string | null;
 }
 
 const ProductsComponent = () => {
