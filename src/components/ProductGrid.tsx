@@ -7,6 +7,7 @@ interface ProductGridProps {
     image: string;
     sizes: unknown;
     categories : unknown;
+    description : string | null;
   }[];
   loading: boolean;
 }
