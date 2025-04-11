@@ -56,6 +56,9 @@ const contact = () => {
                 <a href="https://wa.me/918658276477" target="_blank" className="flex items-center hover:text-green-600">
                     <FaWhatsapp className="mr-2 text-green-500" /> +91 8658276477
                 </a>
+                <p className="mt-5 text-sm text-gray-600 text-center">
+                  Email: <span className="font-medium">sales.goldenclove@gmail.com</span>.
+                </p>
             </div>
           </motion.div>
 
@@ -90,6 +93,9 @@ const contact = () => {
                 <a href="https://wa.me/918658276477" target="_blank" className="flex items-center hover:text-green-600">
                     <FaWhatsapp className="mr-2 text-green-500" /> +91 8658276477
                 </a>
+                <p className="mt-5 text-sm text-gray-600 text-center">
+                  Email: <span className="font-medium">sales.goldenclove@gmail.com</span>.
+                </p>
             </div>
           </motion.div>
         </div>
