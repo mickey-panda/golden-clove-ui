@@ -34,6 +34,7 @@ const CartComponent = () => {
   const [cartTotal, setCartTotal] = useState<number|0>(0);
   const { cart} = useCart();
   const {addNotification} = useNotification();
+  const [loading, setLoading] = useState(false);
 
   // Calculate total price
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -176,6 +177,34 @@ const CartComponent = () => {
       setIsUpdatingCart(false);
     }
   };
+
+  //phonepe payment section
+  const initiatePayment = async () => {
+    setLoading(true);
+
+    try {
+
+      // Call the payment initiation API
+      const response = await fetch('/api/payment/initiate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: 1 * 100 }), // Convert to paise
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to initiate payment');
+      }
+
+      // Redirect to PhonePe checkout page
+      window.location.href = data.checkoutPageUrl;
+    } catch (err) {
+      console.error('Payment initiation error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
  
 
   return (
@@ -290,6 +319,8 @@ const CartComponent = () => {
           </button>
           
             <button
+              onClick={initiatePayment}
+              disabled={loading || total <= 0}
               className="w-full flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 backdrop-blur-md border border-green-400"
             >
               Procced to pay ₹{total}
